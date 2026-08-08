@@ -1,0 +1,30 @@
+---
+layout: layouts/base.njk
+title: The Cusp
+description: Notes from the edge of obsolescence by Thomas Cole.
+---
+<section class="hero">
+  <p class="eyebrow">A small site about big transitions</p>
+  <h1>Notes from the edge of <span>obsolescence</span>.</h1>
+  <p class="hero__lede">
+    The Cusp is Thomas Cole's notebook for software, durable ideas, and the
+    awkwardly interesting space between the tools we relied on and whatever
+    comes next.
+  </p>
+  <a class="button-link" href="{{ '/posts/' | url }}">Read the notes <span aria-hidden="true">→</span></a>
+</section>
+
+<section class="recent-posts" aria-labelledby="recent-heading">
+  <div class="section-heading">
+    <div>
+      <p class="eyebrow">From the notebook</p>
+      <h2 id="recent-heading">Recent posts</h2>
+    </div>
+    <a href="{{ '/posts/' | url }}">View all</a>
+  </div>
+  <div class="post-grid">
+    {% for post in collections.posts | reverse | head(2) %}
+      {% include "post-card.njk" %}
+    {% endfor %}
+  </div>
+</section>

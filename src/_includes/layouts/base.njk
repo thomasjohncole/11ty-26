@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#17142b">
+    <meta name="description" content="{{ description or site.description }}">
+    <title>{% if title and title != site.title %}{{ title }} · {% endif %}{{ site.title }}</title>
+    <link rel="icon" href="{{ '/assets/images/logo-03.svg' | url }}" type="image/svg+xml">
+    <link rel="stylesheet" href="{{ '/assets/css/site.css' | url }}">
+    <link rel="canonical" href="{{ site.url }}{{ page.url | url }}">
+    <script src="{{ '/assets/js/navigation.js' | url }}" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
+    <header class="topbar">
+      <div class="topbar__inner">
+        <a class="brand" href="{{ '/' | url }}" aria-label="{{ site.title }} home">
+          <img src="{{ '/assets/images/logo-03.svg' | url }}" width="144" height="52" alt="">
+          <span>{{ site.author }}</span>
+        </a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+          <span class="nav-toggle__label">Menu</span>
+          <span class="nav-toggle__icon" aria-hidden="true"></span>
+        </button>
+        <nav id="site-nav" class="site-nav" aria-label="Primary navigation">
+          <a href="{{ '/' | url }}"{% if page.url == "/" %} aria-current="page"{% endif %}>Home</a>
+          <a href="{{ '/posts/' | url }}"{% if page.url.startsWith("/posts/") %} aria-current="page"{% endif %}>Posts</a>
+          <a href="{{ '/tags/' | url }}"{% if page.url.startsWith("/tags/") %} aria-current="page"{% endif %}>Tags</a>
+        </nav>
+      </div>
+    </header>
+
+    <div class="page-shell">
+      <aside class="profile" aria-label="About the author">
+        <img
+          class="profile__portrait"
+          src="{{ '/assets/images/thomas-cole.png' | url }}"
+          width="460"
+          height="460"
+          alt="Portrait of Thomas Cole"
+        >
+        <p class="profile__eyebrow">Written by</p>
+        <h2>{{ site.author }}</h2>
+        <p class="profile__tagline">{{ site.tagline }}</p>
+        <a class="github-link" href="{{ site.github }}">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+            <path fill="currentColor" d="M12 .7a12 12 0 0 0-3.8 23.4c.6.1.8-.2.8-.5v-2.1c-3.3.7-4-1.4-4-1.4-.5-1.4-1.3-1.8-1.3-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.6-.3-5.4-1.3-5.4-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2A11.4 11.4 0 0 1 12 6.8c1 0 2 .1 3 .4 2.3-1.5 3.3-1.2 3.3-1.2.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.4 5.9.4.4.8 1.1.8 2.2v3.2c0 .3.2.6.8.5A12 12 0 0 0 12 .7Z"/>
+          </svg>
+          github.com/thomasjohncole
+        </a>
+      </aside>
+
+      <main id="main-content" class="content" tabindex="-1">
+        {{ content | safe }}
+      </main>
+    </div>
+
+    <footer class="footer">
+      <p>Built with <a href="https://www.11ty.dev/">Eleventy</a>. Published from plain text.</p>
+    </footer>
+  </body>
+</html>

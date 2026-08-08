@@ -1,0 +1,17 @@
+{
+  "name": "the-cusp",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "The Cusp, an Eleventy-powered blog by Thomas Cole",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "eleventy",
+    "start": "eleventy --serve"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "3.1.6"
+  }
+}

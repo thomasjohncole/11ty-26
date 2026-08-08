@@ -1,0 +1,14 @@
+<article class="post-card">
+  <p class="post-card__date">
+    <time datetime="{{ post.date | htmlDate }}">{{ post.date | readableDate }}</time>
+    <span aria-hidden="true">·</span>
+    {{ post.data.readingTime }}
+  </p>
+  <h2><a href="{{ post.url | url }}">{{ post.data.title }}</a></h2>
+  <p>{{ post.data.description }}</p>
+  <ul class="tag-list" aria-label="Tags">
+    {% for tag in post.data.tags | withoutTag("posts") %}
+      <li><a href="{{ ('/tags/' + (tag | slugify) + '/') | url }}">#{{ tag }}</a></li>
+    {% endfor %}
+  </ul>
+</article>

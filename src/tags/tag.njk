@@ -1,0 +1,22 @@
+---
+layout: layouts/base.njk
+pagination:
+  data: collections.tagList
+  size: 1
+  alias: tag
+permalink: /tags/{{ tag | slugify }}/index.html
+eleventyComputed:
+  title: "Tagged “{{ tag }}”"
+  description: "Posts tagged {{ tag }} on The Cusp."
+---
+<header class="page-header">
+  <p class="eyebrow">Topic archive</p>
+  <h1>Tagged <span class="accent">#{{ tag }}</span></h1>
+  <p>{{ collections[tag].length }} post{% if collections[tag].length != 1 %}s{% endif %} in this thread.</p>
+</header>
+
+<div class="post-list">
+  {% for post in collections[tag] | reverse %}
+    {% include "post-card.njk" %}
+  {% endfor %}
+</div>

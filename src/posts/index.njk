@@ -1,0 +1,17 @@
+---
+layout: layouts/base.njk
+title: Posts
+description: All posts from The Cusp.
+permalink: /posts/index.html
+---
+<header class="page-header">
+  <p class="eyebrow">The archive</p>
+  <h1>Posts</h1>
+  <p>Dispatches about building for the web and keeping pace with change.</p>
+</header>
+
+<div class="post-list">
+  {% for post in collections.posts | reverse %}
+    {% include "post-card.njk" %}
+  {% endfor %}
+</div>

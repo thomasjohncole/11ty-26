@@ -1,0 +1,44 @@
+---
+layout: layouts/base.njk
+---
+<article class="post">
+  <header class="post__header">
+    <p class="eyebrow">Field note</p>
+    <h1>{{ title }}</h1>
+    <div class="post-meta">
+      <time datetime="{{ date | htmlDate }}">{{ date | readableDate }}</time>
+      <span aria-hidden="true">·</span>
+      <span>{{ readingTime }}</span>
+    </div>
+    {% if tags %}
+      <ul class="tag-list" aria-label="Tags">
+        {% for tag in tags | withoutTag("posts") %}
+          <li><a href="{{ ('/tags/' + (tag | slugify) + '/') | url }}">#{{ tag }}</a></li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </header>
+
+  <div class="prose">
+    {{ content | safe }}
+  </div>
+
+  {% set previousPost = collections.posts | getPreviousCollectionItem %}
+  {% set nextPost = collections.posts | getNextCollectionItem %}
+  {% if previousPost or nextPost %}
+    <nav class="post-nav" aria-label="Post navigation">
+      {% if previousPost %}
+        <a class="post-nav__item" href="{{ previousPost.url | url }}">
+          <span>← Older</span>
+          <strong>{{ previousPost.data.title }}</strong>
+        </a>
+      {% endif %}
+      {% if nextPost %}
+        <a class="post-nav__item post-nav__item--next" href="{{ nextPost.url | url }}">
+          <span>Newer →</span>
+          <strong>{{ nextPost.data.title }}</strong>
+        </a>
+      {% endif %}
+    </nav>
+  {% endif %}
+</article>

@@ -1,0 +1,22 @@
+---
+layout: layouts/base.njk
+title: Tags
+description: Browse posts from The Cusp by topic.
+permalink: /tags/index.html
+---
+<header class="page-header">
+  <p class="eyebrow">Browse by subject</p>
+  <h1>Tags</h1>
+  <p>Follow a thread through the notebook.</p>
+</header>
+
+<ul class="tag-cloud">
+  {% for tag in collections.tagList %}
+    <li>
+      <a href="{{ ('/tags/' + (tag | slugify) + '/') | url }}">
+        <span>#{{ tag }}</span>
+        <small>{{ collections[tag].length }} post{% if collections[tag].length != 1 %}s{% endif %}</small>
+      </a>
+    </li>
+  {% endfor %}
+</ul>
