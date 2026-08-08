@@ -7,7 +7,7 @@
     <meta name="description" content="{{ description or site.description }}">
     <title>{% if title and title != site.title %}{{ title }} · {% endif %}{{ site.title }}</title>
     <link rel="icon" href="{{ '/assets/images/logo-03.svg' | url }}" type="image/svg+xml">
-    <link rel="stylesheet" href="{{ '/assets/css/site.css' | url }}">
+    <link rel="stylesheet" href="{{ '/assets/css/site.css' | url }}?v=20260808-2">
     <link rel="canonical" href="{{ site.url }}{{ page.url | url }}">
     <script src="{{ '/assets/js/navigation.js' | url }}" defer></script>
   </head>
@@ -34,13 +34,15 @@
 
     <div class="page-shell">
       <aside class="profile" aria-label="About the author">
-        <img
-          class="profile__portrait"
-          src="{{ '/assets/images/thomas-cole.png' | url }}"
-          width="460"
-          height="460"
-          alt="Portrait of Thomas Cole"
-        >
+        <div class="profile__portrait-frame">
+          <img
+            class="profile__portrait"
+            src="{{ '/assets/images/thomas-cole.png' | url }}"
+            width="460"
+            height="460"
+            alt="Portrait of Thomas Cole"
+          >
+        </div>
         <p class="profile__eyebrow">Written by</p>
         <h2>{{ site.author }}</h2>
         <p class="profile__tagline">{{ site.tagline }}</p>
